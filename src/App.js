@@ -10,6 +10,7 @@ function App() {
 
   return (
     <div className="header">
+      
       <Navbar drop={drop} setDrop={setDrop} />
       {drop === "visible" && <Dropdown setDrop={setDrop} />}
       <Main />
