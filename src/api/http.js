@@ -2,16 +2,17 @@ import axios from "axios";
 
 const baseURL = "http://92.63.206.40:1122/api";
 
-export const registrate = async () => {
+export const registrate = async (userData) => {
+  
   let res;
   let formData = new FormData();
-  formData.append("login", "rar@gmail.com");
-  formData.append("password", "145668879");
-  formData.append("surname", "Abdunazarov");
-  formData.append("name", "Rivojiddin");
-  formData.append("faculty_id", "123");
-  formData.append("phone", "995206152");
-  formData.append("email", "ra@gmail.com");
+  formData.append("login", userData.login);
+  formData.append("password", userData.password);
+  formData.append("surname", userData.surname);
+  formData.append("name", userData.name);
+  formData.append("faculty_id", userData.faculty);
+  formData.append("phone", userData.phone);
+  formData.append("email", userData.email);
   try {
     res = await axios.post(`${baseURL}/signin`, formData);
     console.log(res);
@@ -21,11 +22,11 @@ export const registrate = async () => {
   }
 };
 
-export const login = async () => {
+export const login = async (login, password) => {
   let res;
   let formData = new FormData();
-  formData.append("login", "rar@gmail.com");
-  formData.append("password", "145668879");
+  formData.append("login", login);
+  formData.append("password", password);
   try {
     res = await axios.post(`${baseURL}/login`, formData);
     console.log(res);
@@ -53,14 +54,12 @@ export const getUser = async (token) => {
 
 
 
-export const changePassword = async () => {
-  let token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfa…jIwfQ.qBcdAwsJIKkLldUt6UdrgYo62uJ1SqgUNMX4uyyv0ls";
+export const changePassword = async (passwords,token) => {
   let res;
   let formData = new FormData();
-  formData.append("old_password", "7654321");
-  formData.append("new_password", "765432177");
-  formData.append("repeat_password", "765432177");
+  formData.append("old_password", passwords.old);
+  formData.append("new_password", passwords.new);
+  formData.append("repeat_password", passwords.confirm);
 
   try {
     res = await axios.post(`${baseURL}/change_password`, formData, {
@@ -75,12 +74,10 @@ export const changePassword = async () => {
   }
 };
 
-export const changePhone = async () => {
-  let token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOjIwfQ.qBcdAwsJIKkLldUt6UdrgYo62uJ1SqgUNMX4uyyv0ls";
+export const changePhone = async (phone,token) => {
   let res;
   let formData = new FormData();
-  formData.append("phone", "7654321");
+  formData.append("phone", phone);
 
 
   try {
@@ -96,12 +93,11 @@ export const changePhone = async () => {
   }
 };
 
-export const changeEmail = async () => {
-  let token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOjIwfQ.qBcdAwsJIKkLldUt6UdrgYo62uJ1SqgUNMX4uyyv0ls";
+export const changeEmail = async (email,token) => {
+
   let res;
   let formData = new FormData();
-  formData.append("email", "my@gmail.com");
+  formData.append("email", email);
 
 
   try {
