@@ -1,3 +1,4 @@
+import React, { useRef } from "react";
 import Content from "../../Layouts/Content";
 import { BoldText, FootText, PlainText } from "../../Styles/mainStyles";
 import {
@@ -9,6 +10,14 @@ import {
 } from "../../Styles/formStyles";
 
 const Phone = () => {
+  const phoneRef = useRef();
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    const phone = phoneRef.current.value;
+    console.log(phone);
+  }
+
   return (
     <Content>
       <BoldText tpe={true} bottom="10px">
@@ -18,10 +27,10 @@ const Phone = () => {
         Phone no. currently registered (+998 93 497 11-38)
         <br /> Available services: EXAMS; HELP DASK; ELECTIONS;
       </PlainText>
-      <Form margin="50px 0 0 0">
+      <Form onSubmit={submitHandler} margin="50px 0 0 0">
         <InputWrapper>
           <Label htmlFor="html">New phone number:</Label>
-          <Input placeholder="Eg. your phone number here" />
+          <Input ref={phoneRef} type="number" placeholder="Eg. your phone number here" />
         </InputWrapper>
         <InputWrapper isTrue={true}>
           <Label isTrue={true} htmlFor="html">

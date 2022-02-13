@@ -1,26 +1,37 @@
+import React, { useRef } from "react";
 import Content from "../../Layouts/Content";
 import { Label, InputWrapper, Form, Button } from "../../Styles/formStyles";
 import { BoldText, FootText, PlainText } from "../../Styles/mainStyles";
 import InputPass from "./InputPass";
 const Password = () => {
+  const currentPasswordRef = React.createRef();
+  const newPasswordRef = React.createRef();
+  const confirmedPasswordRef = React.createRef();
+
+  const submitHandler = () => {
+    const currentPassword = currentPasswordRef.current.value;
+    const newPassword = newPasswordRef.current.value;
+    const confirmedPassword = confirmedPasswordRef.current.value
+    console.log(currentPassword)
+  }
   return (
     <Content>
       <BoldText tpe={true} bottom="10px">Change Password</BoldText>
       <PlainText tpe={true}>
         We suggest you to change your password regularly
       </PlainText>
-      <Form>
+      <Form onSubmit={submitHandler}>
         <InputWrapper>
-          <Label htmlFor="html">Current passwor:</Label>
-          <InputPass />
+          <Label htmlFor="html">Current password:</Label>
+          <InputPass ref={currentPasswordRef}/>
         </InputWrapper>
         <InputWrapper>
-          <Label htmlFor="html">Current passwor:</Label>
-          <InputPass />
+          <Label htmlFor="html">New password:</Label>
+          <InputPass ref={newPasswordRef}/>
         </InputWrapper>
         <InputWrapper>
-          <Label htmlFor="html">Current passwor:</Label>
-          <InputPass />
+          <Label htmlFor="html">Confirm password:</Label>
+          <InputPass ref={confirmedPasswordRef}/>
         </InputWrapper>
         <Button>Change</Button>
       </Form>

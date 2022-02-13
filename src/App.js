@@ -4,6 +4,7 @@ import Dropdown from "./Components/Navbar/Dropdown";
 import Main from "./Pages/Main";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
+import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 
 import "./App.css";
 
@@ -12,12 +13,13 @@ function App() {
 
   return (
     <div className="header">
-      
       <Navbar drop={drop} setDrop={setDrop} />
       {drop === "visible" && <Dropdown setDrop={setDrop} />}
-      <Login title="SIGN IN"/>
-      {/* <Signup title="REGISTRATION FORM"/> */}
-
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/signup" element={<Signup title="REGISTRATION FORM"/>} />
+        <Route path="/login" element={<Login title="SIGN IN"/>} />
+      </Routes>
     </div>
   );
 }
