@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Route } from "react-router-dom";
-import Main from "../../Pages/Main";
+
 
 const baseURL = "http://92.63.206.40:1122/api";
 
