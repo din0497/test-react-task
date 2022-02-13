@@ -4,15 +4,17 @@ import { Button, Form, Input } from "../Styles/formStyles";
 import { InputWrapper, Label } from "../Styles/formStyles";
 import InputPass from "../Components/ChangePassword/InputPass";
 import { Link } from "react-router-dom";
+import { logIn } from "../api/http";
 
 const Login =  (props) => {
   const loginRef = useRef();
   const passwordRef = React.createRef();
 
-  const submitHandler = () => {
+  const submitHandler = (e) => {
+    e.preventDefault()
     const login = loginRef.current.value;
     const password = passwordRef.current.value;
-    console.log(password)
+    logIn(login, password)
   }
   return (
     <AuthLayout title={props.title}>

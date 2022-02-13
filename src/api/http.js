@@ -15,14 +15,14 @@ export const registrate = async (userData) => {
   formData.append("email", userData.email);
   try {
     res = await axios.post(`${baseURL}/signin`, formData);
-    console.log(res);
+    alert(` You are succesfully${res.data.msg}!`);
     return res;
   } catch (err) {
     console.log(err);
   }
 };
 
-export const login = async (login, password) => {
+export const logIn = async (login, password) => {
   let res;
   let formData = new FormData();
   formData.append("login", login);
