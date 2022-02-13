@@ -10,6 +10,7 @@ export const AuthContainer = styled.main`
 
 export const SingningContainer = styled.div`
   width: 45%;
+  min-width: 350px;
   max-width: 902px;
   min-height: 90vh;
   position: absolute;

@@ -5,7 +5,10 @@ import {
 } from "../../Styles/authStyles";
 import { BoldText } from "../../Styles/mainStyles";
 
+
+
 const AuthLayout = (props) => {
+
   return (
     <AuthContainer>
       <SingningContainer>
