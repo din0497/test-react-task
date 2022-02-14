@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import AuthLayout from "../Layouts/auth/authLayout";
 import { Button, Form, Input } from "../Styles/formStyles";
 import { InputWrapper, Label } from "../Styles/formStyles";
@@ -7,19 +7,29 @@ import { Link } from "react-router-dom";
 import { logIn } from "../Redux/reducers/auth";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.token);
+
   const loginRef = useRef();
   const passwordRef = React.createRef();
+
+  const token = useSelector((state) => state.token);
 
   const submitHandler = (e) => {
     e.preventDefault();
     const login = loginRef.current.value;
     const password = passwordRef.current.value;
     dispatch(logIn(login, password));
-    console.log(token);
+    console.log(
+      dispatch(
+        logIn(login, password, () => {
+          navigate("/", { replace: true });
+        })
+      )
+    );
   };
   return (
     <AuthLayout title={props.title}>

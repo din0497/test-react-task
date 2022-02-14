@@ -1,28 +1,21 @@
 import { Nav, Wrapper } from "../../Styles/navbarStyle";
+import { Link } from "react-router-dom";
 // import "../../App.css";
 
 const Navs = () => {
   return (
     <Wrapper>
+      <Nav>Profile</Nav>
+      <Nav>News</Nav>
+      <Nav>Resources</Nav>
+      <Nav>Help</Nav>
       <Nav>
-          Moduls
+        <Link to="/">Profile</Link>
       </Nav>
+
       <Nav>
-          News
+        <Link to="/login">Login</Link>
       </Nav>
-      <Nav>
-          Resources
-      </Nav>
-      <Nav>
-          Help
-      </Nav>
-        <Nav>
-            Profile
-        </Nav>
-        <Nav>
-            Language
-        </Nav>
-        
     </Wrapper>
   );
 };

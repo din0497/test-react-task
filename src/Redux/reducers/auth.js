@@ -28,19 +28,18 @@ export const { loginSuccess, setUserData } = auth.actions;
 
 export default auth.reducer;
 
-export const logIn = (login, password) => async (dispatch) => {
+export const logIn = (login, password, onSuccess, onError) => async (dispatch) => {
   try {
     let formData = new FormData();
     formData.append("login", login);
     formData.append("password", password);
     const res = await axios.post(`${baseURL}/login`, formData);
-    console.log("here");
     if (res.data.msg == "ok") {
       dispatch(loginSuccess(res.data.token));
+      onSuccess()
     }
-
     console.log(res);
-    return res;
+       return false
   } catch (err) {
     console.log(err);
   }

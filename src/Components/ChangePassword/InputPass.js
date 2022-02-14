@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Input, InputContainer } from "../../Styles/formStyles";
 import eye from "../../Assets/shape.png";
-import { registrate, getUser , changePassword, changePhone, changeEmail } from "../../api/http";
 
 const InputPass = React.forwardRef((props, ref) => {
   const [toggle, setToggle] = useState(true);

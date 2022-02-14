@@ -8,7 +8,6 @@ import {
   Label,
   Input,
 } from "../../Styles/formStyles";
-import { login } from "../../api/http";
 
 const Forward = () => {
   const emailRef = useRef();
@@ -37,7 +36,7 @@ const Forward = () => {
           <Label isTrue={true} htmlFor="html">Disable forwarding:</Label>
           <Input isTrue={true} type="radio" />
         </InputWrapper>
-        <Button onClick={() => login}>Change</Button>
+        <Button>Change</Button>
       </Form>
       <FootText>Last e-mail change: 29/07/2021 22:09 - IP 151.33.106.247</FootText>
     </Content>

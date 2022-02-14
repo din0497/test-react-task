@@ -3,16 +3,21 @@ import Content from "../../Layouts/Content";
 import { Label, InputWrapper, Form, Button } from "../../Styles/formStyles";
 import { BoldText, FootText, PlainText } from "../../Styles/mainStyles";
 import InputPass from "./InputPass";
+import { useSelector } from "react-redux";
+
 const Password = () => {
   const currentPasswordRef = React.createRef();
   const newPasswordRef = React.createRef();
   const confirmedPasswordRef = React.createRef();
 
-  const submitHandler = () => {
+  const token = useSelector((state) => state.token);
+
+  const submitHandler = (e) => {
+    e.preventDefault()
     const currentPassword = currentPasswordRef.current.value;
     const newPassword = newPasswordRef.current.value;
     const confirmedPassword = confirmedPasswordRef.current.value
-    console.log(currentPassword)
+    console.log(token)
   }
   return (
     <Content>
