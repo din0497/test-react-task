@@ -18,7 +18,11 @@ const Phone = () => {
   const submitHandler = (e) => {
     e.preventDefault()
     const phone = phoneRef.current.value;
+
     changePhone(phone, token);
+
+    phoneRef.current.value = "";
+
   }
 
   return (

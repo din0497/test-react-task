@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import Content from "../../Layouts/Content";
 import { Label, InputWrapper, Form, Button } from "../../Styles/formStyles";
 import { BoldText, FootText, PlainText } from "../../Styles/mainStyles";
@@ -13,6 +13,12 @@ const Password = () => {
 
   const token = useSelector((state) => state.token);
 
+  const reset = () => {
+    currentPasswordRef.current.value = "";
+    newPasswordRef.current.value = "";
+    confirmedPasswordRef.current.value = "";
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
     const currentPassword = currentPasswordRef.current.value;
@@ -23,7 +29,8 @@ const Password = () => {
       { old: currentPassword, new: newPassword, confirm: confirmedPassword },
       token
     );
-    console.log(token);
+
+    reset();
   };
   return (
     <Content>

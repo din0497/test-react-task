@@ -48,7 +48,7 @@ const UserProfile = () => {
           </div>
 
           <PlainText>
-            272610
+            {data.std_code}
             <br />
             Bachelor of science program
           </PlainText>

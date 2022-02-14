@@ -19,7 +19,10 @@ const Forward = () => {
   const submitHandler = (e) => {
     e.preventDefault()
     const email = emailRef.current.value;
+
     changeEmail(email, token);
+
+    emailRef.current.value=""
   }
 
   return (

@@ -48,6 +48,7 @@ export const Nav = styled.li`
   font-size: 1.125rem;
   align-items: center;
   padding: 4px 15px;
+  cursor: pointer !important;
   &:hover {
     background-color: #e8edea;
     border-radius: 70px;

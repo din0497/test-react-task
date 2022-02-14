@@ -6,9 +6,6 @@ const Dropdown = ({ setDrop }) => {
     setDrop("hidden");
     document.body.style.overflow = "visible";
   };
-  const logoutHandler = () => {
-    clickHandler();
-  };
   return (
     <DropContainer onClick={clickHandler}>
       <DropUl onClick={(e) => e.stopPropagation()}>

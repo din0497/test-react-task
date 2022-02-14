@@ -21,6 +21,8 @@ export const registrate = async (userData, navigate) => {
      };
   } catch (err) {
     console.log(err);
+    alert(res.data.msg);
+
   }
 };
 
@@ -35,6 +37,8 @@ export const logIn = async (login, password) => {
     return res;
   } catch (err) {
     console.log(err);
+    alert(res.data.msg);
+
   }
 };
 
@@ -50,6 +54,8 @@ export const getUser = async (token) => {
     return res;
   } catch (err) {
     console.log(err.response.data);
+    alert(res.data.msg);
+
   }
 };
 
