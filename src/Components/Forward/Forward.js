@@ -8,14 +8,18 @@ import {
   Label,
   Input,
 } from "../../Styles/formStyles";
+import { useSelector } from "react-redux";
+import { changeEmail } from "../../api/http";
 
 const Forward = () => {
+  const {token, userInfo} = useSelector((state) => state);
+
   const emailRef = useRef();
 
   const submitHandler = (e) => {
     e.preventDefault()
     const email = emailRef.current.value;
-    console.log(email);
+    changeEmail(email, token);
   }
 
   return (
@@ -24,7 +28,7 @@ const Forward = () => {
       <PlainText tpe={true}>
         TDAU is not responsible for any lost message due to the activation of
         the forwarding service. Valid messages are those stored in the server
-        with domain: student@tdau.uz Make sure you regularly delete the messages
+        with domain: {userInfo.email} Make sure you regularly delete the messages
         stored on this server.
       </PlainText>
       <Form onSubmit={submitHandler} margin='50px 0 0 0'>

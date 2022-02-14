@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import {useSelector} from 'react-redux'
 import Content from "../../Layouts/Content";
 import { BoldText, FootText, PlainText } from "../../Styles/mainStyles";
 import {
@@ -8,14 +9,16 @@ import {
   Label,
   Input,
 } from "../../Styles/formStyles";
+import { changePhone } from "../../api/http";
 
 const Phone = () => {
+  const {token, userInfo} = useSelector((state) => state);
   const phoneRef = useRef();
 
   const submitHandler = (e) => {
     e.preventDefault()
     const phone = phoneRef.current.value;
-    console.log(phone);
+    changePhone(phone, token);
   }
 
   return (
@@ -24,7 +27,7 @@ const Phone = () => {
         Change Phone number
       </BoldText>
       <PlainText tpe={true}>
-        Phone no. currently registered (+998 93 497 11-38)
+        Phone no. currently registered ({userInfo.phone})
         <br /> Available services: EXAMS; HELP DASK; ELECTIONS;
       </PlainText>
       <Form onSubmit={submitHandler} margin="50px 0 0 0">

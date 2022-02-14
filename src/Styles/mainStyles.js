@@ -6,6 +6,9 @@ export const MainContents = styled.main`
   grid-template-columns: auto auto;
   column-gap: 20px;
   row-gap: 20px;
+  @media only screen and (max-width: 900px) {
+    grid-template-columns: auto;
+  }
 `;
 
 export const Container = styled.div`

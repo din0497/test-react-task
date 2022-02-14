@@ -1,4 +1,5 @@
 import Content from "../../Layouts/Content";
+import { useSelector} from "react-redux";
 import {
   BoldText,
   IconContainer,
@@ -13,6 +14,17 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { MdAddAPhoto } from "react-icons/md";
 
 const UserProfile = () => {
+
+
+  const data = useSelector(state=> state.userInfo)
+
+  // useSelector(state => {
+  //   console.log('State: ', state);
+   
+  // });
+
+
+
   return (
     <Content>
       <Wrapper>
@@ -31,7 +43,7 @@ const UserProfile = () => {
               gap: "5px",
             }}
           >
-            <BoldText>Name Surname</BoldText>
+            <BoldText>{`${data.name} ${data.surname}`}</BoldText>
             <AiOutlineEdit color="#1666C5" size={20} />
           </div>
 
@@ -40,7 +52,7 @@ const UserProfile = () => {
             <br />
             Bachelor of science program
           </PlainText>
-          <BoldText>ENGNEERING AND MANAGEMENT</BoldText>
+          <BoldText>{data.faculty_name}</BoldText>
         </TextWrapper>
       </Wrapper>
       <div

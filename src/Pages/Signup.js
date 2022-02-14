@@ -4,8 +4,12 @@ import { Button, Form, Input } from "../Styles/formStyles";
 import { InputWrapper, Label } from "../Styles/formStyles";
 import InputPass from "../Components/ChangePassword/InputPass";
 import { registrate } from "../api/http";
+import { useNavigate } from "react-router-dom";
+
 
 const Signup = (props) => {
+
+  const navigate = useNavigate()
   const loginRef = useRef();
   const passwordRef = React.createRef();
   const nameRef = useRef();
@@ -22,6 +26,7 @@ const Signup = (props) => {
     const surname = surnameRef.current.value;
     const email = emailRef.current.value;
     const phone = phoneRef.current.value;
+    const faculty = facultyRef.current.value
 
     registrate({
       login: login,
@@ -30,8 +35,11 @@ const Signup = (props) => {
       surname: surname,
       email: email,
       phone: phone,
-      faculty:1234
+      faculty:faculty
+    }, ()=>{
+      navigate("/login", { replace: true })
     });
+
   };
   return (
     <AuthLayout title={props.title}>
@@ -54,12 +62,12 @@ const Signup = (props) => {
         </InputWrapper>
         <InputWrapper>
           <Label htmlFor="html">e-mail</Label>
-          <Input type="email" placeholder="Eg. your email here" />
+          <Input ref={emailRef} type="email" placeholder="Eg. your email here" />
         </InputWrapper>
         <InputWrapper>
           <Label htmlFor="html">Phone number</Label>
           <Input
-            ref={emailRef}
+            ref={phoneRef}
             type="number"
             placeholder="Eg. your number here"
           />
@@ -67,7 +75,7 @@ const Signup = (props) => {
         <InputWrapper>
           <Label htmlFor="html">Faculty</Label>
           <Input
-            ref={phoneRef}
+            ref={facultyRef}
             type="number"
             placeholder="Eg. your number here"
           />

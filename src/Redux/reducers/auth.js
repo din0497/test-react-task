@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-
 const baseURL = "http://92.63.206.40:1122/api";
 
 const initialState = {
@@ -21,25 +20,37 @@ const auth = createSlice({
     setUserData: (state, action) => {
       state.userInfo = action.payload;
     },
+    logOut: (state, action) => {
+      state.token = null;
+      state.userInfo = {};
+    },
   },
 });
 
-export const { loginSuccess, setUserData } = auth.actions;
+export const { loginSuccess, setUserData, logOut } = auth.actions;
 
 export default auth.reducer;
 
-export const logIn = (login, password, onSuccess, onError) => async (dispatch) => {
-  try {
-    let formData = new FormData();
-    formData.append("login", login);
-    formData.append("password", password);
-    const res = await axios.post(`${baseURL}/login`, formData);
-    if (res.data.msg == "ok") {
-      dispatch(loginSuccess(res.data.token));
-      onSuccess()
+export const logIn =
+  (login, password, onSuccess, onError) => async (dispatch) => {
+    try {
+      let formData = new FormData();
+      formData.append("login", login);
+      formData.append("password", password);
+      const res = await axios.post(`${baseURL}/login`, formData);
+      if (res.data.msg == "ok") {
+        dispatch(loginSuccess(res.data.token));
+        onSuccess();
+      }
+      console.log(res);
+    } catch (err) {
+      console.log(err);
     }
-    console.log(res);
-       return false
+  };
+export const userLogOut = (onSuccess) => async (dispatch) => {
+  try {
+    dispatch(logOut());
+    onSuccess();
   } catch (err) {
     console.log(err);
   }

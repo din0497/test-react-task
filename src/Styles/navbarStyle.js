@@ -7,6 +7,7 @@ export const Wrapper = styled.ul`
   gap: 15px;
   list-style-type: none;
   margin-top: 25px;
+  margin:auto;
   @media only screen and (max-width: 769px) {
     display: none;
   }
@@ -18,10 +19,16 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   height: 50px;
-  /* padding: 0 35px; */
-  justify-content: space-between;
+  padding: 0 35px;
+  /* justify-content: left;
+  gap:60px; */
   margin-left: auto;
   margin-right: auto;
+
+  @media only screen and (max-width: 769px) {
+   justify-content:space-between;
+   
+  }
 
   animation: nav-load 300ms ease-in;
 

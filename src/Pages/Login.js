@@ -23,13 +23,12 @@ const Login = (props) => {
     const login = loginRef.current.value;
     const password = passwordRef.current.value;
     dispatch(logIn(login, password));
-    console.log(
+    
       dispatch(
         logIn(login, password, () => {
           navigate("/", { replace: true });
         })
       )
-    );
   };
   return (
     <AuthLayout title={props.title}>
