@@ -9,10 +9,7 @@ const Dropdown = ({ setDrop }) => {
   return (
     <DropContainer onClick={clickHandler}>
       <DropUl onClick={(e) => e.stopPropagation()}>
-        <DropButton  text="Home" />
-        <DropButton  text="About" />
-        <DropButton  text="Projects" />
-        <DropButton  text="Blog" />
+        <DropButton  text="Module" />
         <DropButton  text="Log in" />
       </DropUl>
     </DropContainer>
