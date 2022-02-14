@@ -18,13 +18,6 @@ const UserProfile = () => {
 
   const data = useSelector(state=> state.userInfo)
 
-  // useSelector(state => {
-  //   console.log('State: ', state);
-   
-  // });
-
-
-
   return (
     <Content>
       <Wrapper>
